@@ -15,8 +15,8 @@ export default class NavBar extends Component {
             <ul className="nav-bar">
               <li><a onClick={() => browserHistory.push("/")}>Main</a></li>
               <li><a onClick={() => browserHistory.push("/education")}>Education</a></li>
-              <li><a href="">Films & Theatres</a></li>
-              <li><a href="">Sights</a></li>
+              <li><a onClick={() => browserHistory.push("/films")}>Films & Theatres</a></li>
+              <li><a onClick={() => browserHistory.push("/sights")}>Sights</a></li>
             </ul>
         </div>
       </div>
