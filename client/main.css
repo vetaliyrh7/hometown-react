@@ -1,0 +1,31 @@
+/* CSS declarations go here */
+.title {
+  display: block;
+  padding: 2em;
+  min-height: 200px;
+  font-size: 34px;
+  color: white;
+}
+.nav-bar {
+  height: 60px;
+}
+.nav-bar li {
+  line-height: 60px;
+  font-size: 16px;
+  display: inline-block;
+}
+.nav-bar li a {
+  display: block;
+  color: white;
+  padding: 0 1em;
+  height: 60px;
+}
+.nav-bar li a:hover {
+  cursor: pointer;
+  background: #42a5f5;
+}
+@media screen and (max-width: 765px){
+  .main-navigation {
+    min-height: 100px;
+  }
+}

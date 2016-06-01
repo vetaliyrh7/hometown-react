@@ -1,0 +1,17 @@
+{
+  "name": "hometown-react",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "material-ui": "^0.15.0",
+    "materialize-css": "^0.97.6",
+    "meteor-node-stubs": "~0.2.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-icons": "^2.1.0",
+    "react-router": "^2.4.1",
+    "react-tap-event-plugin": "^1.0.0"
+  }
+}
