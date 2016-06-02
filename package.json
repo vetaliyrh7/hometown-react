@@ -5,10 +5,13 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
+    "lodash": "^4.13.1",
     "material-ui": "^0.15.0",
     "materialize-css": "^0.97.6",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.1.0",
+    "react-addons-pure-render-mixin": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-icons": "^2.1.0",
     "react-router": "^2.4.1",

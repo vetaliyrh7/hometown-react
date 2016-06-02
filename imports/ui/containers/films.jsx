@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from "react";
 import NavBar from "../components/nav-bar.jsx";
+// CUSTOM COMPONENTS
+import Footer from "../components/footer.jsx";
 
 export default class FilmsPage extends Component {
 
@@ -19,6 +21,7 @@ export default class FilmsPage extends Component {
       <div className="main-page">
         <NavBar title={this.state.title} />
         This is {this.state.title}
+        <Footer />
       </div>
     )
   }

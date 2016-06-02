@@ -22,7 +22,19 @@
 }
 .nav-bar li a:hover {
   cursor: pointer;
-  background: #42a5f5;
+  background: #0288d1;
+}
+.hidden-overflow {
+  overflow: hidden;
+}
+.link-text {
+  color: #ef5350;
+}
+.borderless {
+  border: none;
+}
+.top-space {
+  margin-top: 3em;
 }
 @media screen and (max-width: 765px){
   .main-navigation {
