@@ -36,6 +36,23 @@
 .top-space {
   margin-top: 3em;
 }
+.pagination li {
+  margin: 0 3px;
+  padding: 0;
+}
+.pagination .active-link a {
+  color: white;
+}
+.pagination li a {
+  padding: 0 10px;
+  cursor: pointer;
+}
+.pagination li:hover {
+  background: #1976d2;
+}
+.pagination li:hover a {
+  color: white;
+}
 @media screen and (max-width: 765px){
   .main-navigation {
     min-height: 100px;
