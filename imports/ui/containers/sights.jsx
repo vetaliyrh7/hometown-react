@@ -13,7 +13,7 @@ export default class SightsPage extends Component {
     super();
     this.state = {
       title: "Sights"
-    }
+    };
   }
 
   render() {
@@ -23,6 +23,6 @@ export default class SightsPage extends Component {
         This is {this.state.title}
         <Footer />
       </div>
-    )
+    );
   }
 }

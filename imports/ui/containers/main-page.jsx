@@ -1,30 +1,28 @@
-import React, { PropTypes, Component } from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
-import ReactPaginate from 'react-paginate'
-import _ from 'lodash'
+import React, { PropTypes, Component } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+import ReactPaginate from 'react-paginate';
+import _ from 'lodash';
 // CUSTOM COMPONENTS
-import NavBar from './components/nav-bar.jsx'
-import MainPageNews from './components/main-page-news.jsx'
-import Footer from './components/footer.jsx'
+import MainPageNews from '../components/main-page-news.jsx';
 // SERVER DATA
-import { Posts } from '../api/posts.js'
+import { Posts } from '../../api/posts.js';
 
 export default class MainPage extends Component {
 
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       title: 'Main Page',
       posts: props.posts,
       limit: 5
-    }
+    };
   }
 
   componentWillReceiveProps (props) {
     if (props.posts !== this.props.posts) {
       this.setState({
         posts: props.posts
-      })
+      });
     }
   }
 
@@ -32,20 +30,19 @@ export default class MainPage extends Component {
     const { limit } = this.state;
     this.setState({
       posts: Posts.find({type: 'News'}, {limit: limit, skip: data.selected * limit}).fetch()
-    })
+    });
   }
 
   loadPosts (post, index) {
     return (
       <MainPageNews key={index} post={post} />
-    )
+    );
   }
 
   render () {
-    const { posts, limit } = this.state
+    const { posts, limit } = this.state;
     return (
       <div className='main-page'>
-        <NavBar title={this.state.title} />
         {_.map(posts, this.loadPosts)}
         <div className='container center-align'>
           <ReactPaginate previousLabel={"<"}
@@ -59,20 +56,19 @@ export default class MainPage extends Component {
             subContainerClassName={"pages pagination"}
             activeClassName={"active-link light-blue darken-4"} />
         </div>
-        <Footer />
       </div>
-    )
+    );
   }
 }
 
 MainPage.propTypes = {
   posts: PropTypes.array.isRequired,
   postsCount: PropTypes.number
-}
+};
 
 export default createContainer(() => {
   return {
     posts: Posts.find({type: 'News'}, {limit: 5}).fetch(),
     postsCount: Posts.find().count()
-  }
-}, MainPage)
+  };
+}, MainPage);

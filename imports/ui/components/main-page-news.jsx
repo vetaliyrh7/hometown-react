@@ -32,7 +32,7 @@ render() {
         </CardActions>
       </Card>
     </div>
-  )
+  );
 }
 }
 
@@ -42,5 +42,5 @@ MainPageNews.propTypes = {
 
 
 MainPageNews.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
+  muiTheme: React.PropTypes.object.isRequired
 };

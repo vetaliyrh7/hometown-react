@@ -13,7 +13,7 @@ export default class EducationPage extends Component {
     super();
     this.state = {
       title: "Education"
-    }
+    };
   }
 
   render() {
@@ -23,6 +23,6 @@ export default class EducationPage extends Component {
         This is {this.state.title}
         <Footer />
       </div>
-    )
+    );
   }
 }

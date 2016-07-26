@@ -13,7 +13,7 @@ export default class FilmsPage extends Component {
     super();
     this.state = {
       title: "Films & Theatres"
-    }
+    };
   }
 
   render() {
@@ -23,6 +23,6 @@ export default class FilmsPage extends Component {
         This is {this.state.title}
         <Footer />
       </div>
-    )
+    );
   }
 }
