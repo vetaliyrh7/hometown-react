@@ -95,7 +95,7 @@ export default createContainer(() => {
     const posts = Meteor.subscribe('posts');
     const loaded = posts.ready();
     return {
-      posts: Posts.find({type: 'News'}, {limit: 5}).fetch(),
+      posts: Posts.find({type: 'News'}, {limit: 5}).fetch().reverse(),
       postsCount: Posts.find().count(),
       loaded: loaded
     };
