@@ -1,11 +1,18 @@
 import React, { PropTypes, Component } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import ReactPaginate from 'react-paginate';
+import CircularProgress from 'material-ui/CircularProgress';
 import _ from 'lodash';
+// Theme components
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // CUSTOM COMPONENTS
 import MainPageNews from '../components/main-page-news.jsx';
 // SERVER DATA
-import { Posts } from '../../api/posts.js';
+import {
+  Posts
+} from '../../api';
 
 export default class MainPage extends Component {
 
@@ -16,6 +23,10 @@ export default class MainPage extends Component {
       posts: props.posts,
       limit: 5
     };
+  }
+
+  getChildContext() {
+    return { muiTheme: getMuiTheme(baseTheme) };
   }
 
   componentWillReceiveProps (props) {
@@ -39,7 +50,7 @@ export default class MainPage extends Component {
     );
   }
 
-  render () {
+  renderContent () {
     const { posts, limit } = this.state;
     return (
       <div className='main-page'>
@@ -59,16 +70,33 @@ export default class MainPage extends Component {
       </div>
     );
   }
+  render() {
+    return this.props.loaded
+        ? this.renderContent()
+        : <div className="container center-align spinned">
+              <CircularProgress size={1} />
+          </div>;
+  }
+
 }
+
 
 MainPage.propTypes = {
   posts: PropTypes.array.isRequired,
-  postsCount: PropTypes.number
+  postsCount: PropTypes.number,
+  loaded: PropTypes.bool
+};
+
+MainPage.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired
 };
 
 export default createContainer(() => {
-  return {
-    posts: Posts.find({type: 'News'}, {limit: 5}).fetch(),
-    postsCount: Posts.find().count()
-  };
+    const posts = Meteor.subscribe('posts');
+    const loaded = posts.ready();
+    return {
+      posts: Posts.find({type: 'News'}, {limit: 5}).fetch(),
+      postsCount: Posts.find().count(),
+      loaded: loaded
+    };
 }, MainPage);

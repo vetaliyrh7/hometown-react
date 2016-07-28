@@ -1,4 +1,7 @@
 /* CSS declarations go here */
+body {
+  background: rgba(0,0,0,0.1);
+}
 .title {
   display: block;
   padding: 2em;
@@ -52,6 +55,9 @@
 }
 .pagination li:hover a {
   color: white;
+}
+.spinned {
+  padding: 8em 0;
 }
 @media screen and (max-width: 765px){
   .main-navigation {

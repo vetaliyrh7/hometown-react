@@ -1,4 +1,4 @@
-import React, {PropTypes, Component} from "react";
+  import React, {PropTypes, Component} from "react";
 
 export default class Footer extends Component {
 
@@ -14,7 +14,7 @@ export default class Footer extends Component {
             </div>
             <div className="col l4 s12 hidden-overflow">
               <h5 className="white-text">Additional project info</h5>
-              <iframe className="borderless" src="http://ghbtns.com/github-btn.html?user=vetaliyrh7&amp;repo=hometown-react&amp;type=watch&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+              <iframe className="borderless" src="http://ghbtns.com/github-btn.html?user=vetaliyrh7&amp;repo=hometown-react&amp;type=watch&amp;count=true&amp;size=large" scrolling="0" width="170" height="30"></iframe>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { Posts } from '../imports/api/posts.js';
+import { Posts } from '../imports/api';
+import '../imports/startup/server/main.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -19,7 +20,7 @@ Meteor.startup(() => {
           title: 'Developer chat is up!',
           subtitle: 'Now you can speak with Hometown developers',
           creator: 'Vitaliy Kononenko',
-          creator: 'admin',
+          role: 'admin',
           shortText: 'I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.',
           text: 'I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.',
           phone: "022919418238",
