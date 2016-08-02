@@ -21,7 +21,7 @@ class PostsList extends Component {
     this.state = {
       title: 'Main Page',
       posts: props.posts,
-      limit: 5
+      limit: 15
     };
   }
 
@@ -64,7 +64,7 @@ class PostsList extends Component {
             breakLabel={<a href=''>...</a>}
             pageNum={this.props.postsCount / limit}
             marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={15}
             clickCallback={this.handlePageClick.bind(this)}
             containerClassName={"pagination"}
             subContainerClassName={"pages pagination"}
