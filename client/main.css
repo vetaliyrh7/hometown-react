@@ -59,6 +59,71 @@ body {
 .spinned {
   padding: 8em 0;
 }
+.white-cog {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 32px;
+  color: white;
+}
+.card-type {
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 1px gray;
+}
+.rounded-box {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.paddinged {
+  padding: 0 40px;
+}
+.no-padding {
+  padding: 0;
+}
+.isActive:after {
+  content: "✔";
+  background: #1976d2;
+  padding: 6px 7px;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.go-back {
+  box-shadow: 0 3px 3px 0px gray;
+  display: inline-block;
+  width: auto;
+  position: absolute;
+  font-size: 24px;
+  left: 17px;
+  top: 8px;
+  cursor: pointer;
+  background: #0288d1;
+  color: white;
+  padding: 0px 7px 2px 7px;
+  border-radius: 50%;
+}
+.go-back:hover:after {
+  content: 'Return';
+  background: rgba(13, 71, 161, 0.6);
+  padding: 0 11px;
+  position: absolute;
+  top: 5px;
+  right: -85px;
+  border-radius: 3px;
+  cursor: default;
+  font-size: 18px;
+}
+.save,
+.discard {
+  box-shadow: 0 3px 6px 1px gray!important;
+}
+.save button {
+  background-color: #0288d1!important;
+}
+.discard button {
+  background-color: #ef5350!important;
+}
 @media screen and (max-width: 765px){
   .main-navigation {
     min-height: 100px;

@@ -1,20 +1,20 @@
 import React, { PropTypes, Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import { browserHistory, Link } from 'react-router';
 import ReactPaginate from 'react-paginate';
 import CircularProgress from 'material-ui/CircularProgress';
+import {List, ListItem} from 'material-ui/List';
 import _ from 'lodash';
 // Theme components
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-// CUSTOM COMPONENTS
-import MainPageNews from '../components/main-page/main-page-news.jsx';
 // SERVER DATA
 import {
   Posts
-} from '../../api';
+} from '../../../api';
 
-export default class MainPage extends Component {
+class PostsList extends Component {
 
   constructor (props) {
     super(props);
@@ -46,7 +46,8 @@ export default class MainPage extends Component {
 
   loadPosts (post, index) {
     return (
-      <MainPageNews key={index} post={post} />
+		<ListItem key={index} primaryText={post.title} className="black-text"
+							onClick={() => browserHistory.push("/dashboard/posts/" + post._id)} />
     );
   }
 
@@ -54,7 +55,9 @@ export default class MainPage extends Component {
     const { posts, limit } = this.state;
     return (
       <div className='main-page'>
-        {_.map(posts, this.loadPosts)}
+		<List>
+			{_.map(posts, this.loadPosts)}
+        </List>
         <div className='container center-align'>
           <ReactPaginate previousLabel={"<"}
             nextLabel={">"}
@@ -81,13 +84,13 @@ export default class MainPage extends Component {
 }
 
 
-MainPage.propTypes = {
+PostsList.propTypes = {
   posts: PropTypes.array.isRequired,
   postsCount: PropTypes.number,
   loaded: PropTypes.bool
 };
 
-MainPage.childContextTypes = {
+PostsList.childContextTypes = {
   muiTheme: PropTypes.object.isRequired
 };
 
@@ -99,4 +102,4 @@ export default createContainer(() => {
       postsCount: Posts.find().count(),
       loaded: loaded
     };
-}, MainPage);
+}, PostsList);

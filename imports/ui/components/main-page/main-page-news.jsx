@@ -42,5 +42,5 @@ MainPageNews.propTypes = {
 
 
 MainPageNews.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired
+  muiTheme: PropTypes.object.isRequired
 };
