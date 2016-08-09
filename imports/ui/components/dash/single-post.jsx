@@ -7,26 +7,75 @@ import RaisedButton from 'material-ui/RaisedButton';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import CircularProgress from 'material-ui/CircularProgress';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import _ from 'lodash';
+import { Tracker } from 'meteor/tracker';
+import Progress from './ProgressBar.jsx';
+
+import { FS } from 'meteor/cfs:base-package';
 
 import {
-  Posts
+  Posts,
+  Images, uploadImg
 } from '../../../api';
 
 
 class SinglePost extends Component {
 
-  constructor(props) {
-    super(props);
-    console.log("DATA", props);
+constructor(props) {
+  super(props);
+  console.log("DATA", props);
+  this.state = { ImageId: undefined };
+}
 
+getChildContext() {
+  return { muiTheme: getMuiTheme(baseTheme) };
+}
+
+uploadFile(ev) {
+  ev.preventDefault();
+  let reader = new FileReader();
+  let file = ev.target.files[0];
+
+  const fileM = uploadImg(new FS.File(file));
+  // console.log(Images.find().fetch());
+  if(fileM) {
+    this.setState({ ImageId: fileM._id });
   }
 
-  getChildContext() {
-    return { muiTheme: getMuiTheme(baseTheme) };
-  }
+ //  const res = Images.findOne(fileM._id);
+ // console.log(res , res.isUploaded());
+
+  // setInterval(() => {
+  //   console.log(res.isUploaded());
+  // }, 100);
+
+  // Tracker.autorun(function(c) {
+  //
+  // });
+
+  // reader.onload = () => {
+  //
+  //
+  //   this.setState({
+  //     file: file,
+  //     imagePreviewUrl: reader.result
+  //   });
+  // };
+  //
+  //   reader.readAsDataURL(file);
+}
+
+handleSubmit(ev) {
+    ev.preventDefault();
+    const { file } = this.state;
+    console.log("STATE", file);
+    uploadImg('shit', file);
+}
 
 renderContent() {
   const { post } = this.props;
+
+  console.log(this.state.ImageId)
   return (
       <div style={{paddingTop: 8, paddingBottom: 8}}>
         <Card>
@@ -37,6 +86,12 @@ renderContent() {
           <CardTitle title={post.title} subtitle={post.subtitle}/>
           <CardText>
             {post.shortText}
+            <br />
+            <form onSubmit={this.handleSubmit.bind(this)}>
+               <input type="file" placeholder="Load files" onChange={this.uploadFile.bind(this)} />
+               <button type="submit" onClick={this.handleSubmit.bind(this)}>Upload Image</button>
+            </form>
+            <Progress id={this.state.ImageId} />
           </CardText>
           <CardActions>
             <RaisedButton labelColor="white" className="save" label="Save changes" />
@@ -67,6 +122,7 @@ SinglePost.childContextTypes = {
 
 export default createContainer((SinglePost) => {
     const posts = Meteor.subscribe('posts');
+    Meteor.subscribe('images');
     const loaded = posts.ready();
 
     const { postID } = SinglePost.params;

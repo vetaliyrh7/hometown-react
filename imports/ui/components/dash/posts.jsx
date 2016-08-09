@@ -11,7 +11,8 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // SERVER DATA
 import {
-  Posts
+  Posts,
+  Images, uploadImg
 } from '../../../api';
 
 class PostsList extends Component {
@@ -55,8 +56,8 @@ class PostsList extends Component {
     const { posts, limit } = this.state;
     return (
       <div className='main-page'>
-		<List>
-			{_.map(posts, this.loadPosts)}
+        <List>
+            {_.map(posts, this.loadPosts)}
         </List>
         <div className='container center-align'>
           <ReactPaginate previousLabel={"<"}

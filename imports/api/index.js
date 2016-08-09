@@ -1,4 +1,4 @@
 export * from './models/Posts';
 export * from './models/User';
-// export * from './model/Colors';
+export * from './models/Images';
 // export * from './model/Arches';
