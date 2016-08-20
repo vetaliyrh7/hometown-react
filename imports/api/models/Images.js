@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { FS } from 'meteor/cfs:base-package';
 import {GridFS } from 'meteor/cfs:gridfs';
 import { serverFn } from '../lib';
+import { User } from './User';
 import _ from 'lodash';
 
 import { Tracker } from 'meteor/tracker';
@@ -38,33 +39,15 @@ export const loadImage = function (id) {
   return file ? file.url() : '/images/image-not-found.png';
 };
 
-export const uploadImg = function (file) {
+export const uploadImg = function (file, userId) {
   return Images.insert(file, function (err, fileObj) {
-    //   var start = new Date().getTime();
-      progress(fileObj._id);
-
-
-    console.log(fileObj, fileObj.isUploaded())
-    // while(!fileObj.isUploaded()) {
-    //     console.log(fileObj.uploadProgress());
-    // }
-      // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+    return Meteor.users.update({_id: userId}, {
+        $set: {
+          'cover': fileObj._id
+        }
+    });
   });
 };
-
-export const progress = serverFn('progress', true, function(fileId, start){
-    var file = Images.findOne(fileId);
-    console.log(file.uploadProgress());
-    file.once('stored', Meteor.bindEnvironment(function() {
-      console.log(file.uploadProgress());
-        // if(file.isUploaded() === true) {
-        //     var end = new Date().getTime();
-        //     var time = end - start;
-        //     console.log("isUploaded??", file.isUploaded());
-        //     console.log("EXEC_TIME", time);
-        // }
-    }));
-});
 
 // export const uploadImg = serverFn('uploadImg', true, function (val, files) {
 //   console.log("ServerSide", val, files);

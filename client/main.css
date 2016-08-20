@@ -124,6 +124,15 @@ body {
 .discard button {
   background-color: #ef5350!important;
 }
+.fileUploader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
 @media screen and (max-width: 765px){
   .main-navigation {
     min-height: 100px;
