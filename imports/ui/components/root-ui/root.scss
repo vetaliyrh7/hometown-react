@@ -1,0 +1,124 @@
+$secondary: rgb(230, 92, 0);
+
+.root-head {
+
+    .search-box {
+        display: inline-block;
+        float: right;
+        .search-ico {
+            position: absolute;
+            vertical-align: middle;
+            color: #e65c00;
+            font-size: 21px;
+            top: 11px;
+            right: 23px;
+            cursor: pointer;
+        }
+        .search-posts {
+            display: inline-block;
+            float: right;
+            border-radius: 32px;
+            border: solid 1px transparent;
+            padding: 0 15px;
+            background: rgba(255,255,255,0.1);
+            color: $secondary;
+            font-size: 28px;
+            width: 30px;
+            transition: all 1s ease;
+            &:focus {
+                border: solid 1px $secondary;
+                outline: none;
+            }
+            &.open {
+                width: 300px;
+                transition: all 1s ease;
+            }
+        }
+    }
+
+    .header-text {
+        margin: 0;
+        position: absolute;
+        top: 18px;
+        padding: 6px 18px;
+        left: 0;
+        z-index: 9;
+        display: block;
+        width: 100%;
+        background: rgba(255,255,255,0.2);
+        span {
+            color: white;
+            &.secondary-text {
+                color: $secondary;
+            }
+        }
+    }
+    .flexible-img {
+        position: relative;
+        height: 539px;
+        background-size: 100% 120%;
+        display: flex;
+        align-items: center;
+        .arrow-l, .arrow-r {
+            color: white;
+            font-size: 46px;
+            cursor: pointer;
+            &:hover {
+                color: $secondary;
+            }
+        }
+        .arrow-r {
+            vertical-align: middle;
+            position: absolute;
+            right: 0;
+        }
+    }
+}
+
+.left-side-nav {
+    display: flex;
+    position: fixed;
+    top: 45%;
+    left: -142px;
+    transition: all 1s ease;
+    align-content: center;
+    align-items: center;
+    &.showed {
+        left: 0;
+        transition: all 1s ease;
+    }
+    .nav {
+        li {
+            position: relative;
+            display: block;
+            background: rgba(72, 85, 99, 0.5);
+            margin-bottom: 4px;
+            border-bottom: solid 3px transparent;
+            &:hover, &:active, &:visited {
+                background: white;
+                border-bottom: solid 3px $secondary;
+                cursor: pointer;
+                a {
+                    color: $secondary;
+                }
+            }
+            a {
+                color: white;
+            }
+        }
+    }
+    .arrows-block {
+        font-size: 49px;
+        color: white;
+        display: block;
+        padding-bottom: 0.3em;
+        cursor: pointer;
+        margin-left: 3px;
+        &:hover {
+            color: $secondary;
+        }
+        svg {
+            background: rgba(255,255,255, 0.3);
+        }
+    }
+}

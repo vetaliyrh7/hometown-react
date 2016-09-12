@@ -3,18 +3,27 @@ import { createContainer } from 'meteor/react-meteor-data';
 import _ from 'lodash';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
+
+//SCSS files
+
 // CUSTOM COMPONENTS
-import NavBar from './components/root-ui/nav-bar.jsx';
-import Footer from './components/root-ui/footer.jsx';
+import PageHeader from './components/root-ui/PageHeader';
+import NavBar from './components/root-ui/nav-bar';
 
 export default class App extends Component {
-  render () {
-      return (
-        <div className="root">
-          <NavBar title="Main" />
-            {this.props.children}
-          <Footer />
-        </div>
-      );
-  }
+
+    constructor() {
+        super();
+        this.state = {}
+    }
+
+    render() {
+        return (
+            <div className="root">
+                <PageHeader />
+                <NavBar />
+                {this.props.children}
+            </div>
+        );
+    }
 }
