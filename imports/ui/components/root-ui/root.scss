@@ -24,14 +24,14 @@ $secondary: rgb(230, 92, 0);
             color: $secondary;
             font-size: 28px;
             width: 30px;
-            transition: all 1s ease;
+            transition: all .5s ease;
             &:focus {
                 border: solid 1px $secondary;
                 outline: none;
             }
             &.open {
                 width: 300px;
-                transition: all 1s ease;
+                transition: all .5s ease;
             }
         }
     }
@@ -80,12 +80,12 @@ $secondary: rgb(230, 92, 0);
     position: fixed;
     top: 45%;
     left: -142px;
-    transition: all 1s ease;
+    transition: all .7s ease;
     align-content: center;
     align-items: center;
     &.showed {
         left: 0;
-        transition: all 1s ease;
+        transition: all .7s ease;
     }
     .nav {
         li {
