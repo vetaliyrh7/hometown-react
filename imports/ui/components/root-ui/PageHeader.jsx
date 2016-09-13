@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from "react";
 import { browserHistory, Link } from 'react-router';
+import { createContainer } from 'meteor/react-meteor-data';
 import FaAngleLeft from 'react-icons/lib/fa/angle-left';
 import FaAngleRight from 'react-icons/lib/fa/angle-right';
 import FaSearch from 'react-icons/lib/fa/search';
@@ -9,62 +10,22 @@ import _ from 'lodash';
 import './root.scss';
 
 //Custom components
+import AuthContainer from './PageHeader/AuthContainer';
 
-export default class PageHeader extends Component {
+//API imports
+import { User } from '../../../api';
+
+class PageHeader extends Component {
 
     constructor() {
         super();
-        const images = [{
-            id: 0,
-            name: 'bg1',
-            src: '/carousel/bg1.jpg'
-        },
-            {
-                id: 1,
-                name: 'bg2',
-                src: '/carousel/bg2.jpg'
-            },
-            {
-                id: 2,
-                name: 'bg3',
-                src: '/carousel/bg3.jpg'
-            }];
         this.state = {
-            images: images,
-            currentImage: _.head(images),
-            openSearch: false
+            openSearch: false,
+            showLogin: false
         };
     }
 
-    nextImage() {
-        const { images, currentImage } = this.state;
-        const index = _.indexOf(images, currentImage);
-        if (index < images.length - 1) {
-            this.setState({
-                currentImage: images[index + 1]
-            });
-        }
-        else if (index === images.length - 1) {
-            this.setState({
-                currentImage: images[0]
-            });
-        }
-    }
-
-    prevImage() {
-        const { images, currentImage } = this.state;
-        const index = _.indexOf(images, currentImage);
-        if (index > 0) {
-            this.setState({
-                currentImage: images[index - 1]
-            });
-        }
-        else if (index === 0) {
-            this.setState({
-                currentImage: _.last(images)
-            });
-        }
-    }
+    //const isDynamic = window.pageYOffset > 154;
 
     toggleSearch() {
         const { openSearch } = this.state;
@@ -73,9 +34,18 @@ export default class PageHeader extends Component {
         });
     }
 
+    toggleLogin() {
+        const { showLogin } = this.state;
+        this.setState({
+            showLogin: !showLogin
+        });
+    }
+
     render() {
-        const { currentImage, openSearch } = this.state;
+        const { openSearch, showLogin } = this.state;
+        const { user, isLoggedIn } = this.props;
         const open = openSearch ? 'open' : '';
+        const loginToggle = !!showLogin ? 'show-auth' : '';
 
         return (
             <div className="root-head">
@@ -86,19 +56,28 @@ export default class PageHeader extends Component {
                         <input className={`search-posts ${open}`} type="text" placeholder="Search..."/>
                         <FaSearch className="search-ico" onClick={this.toggleSearch.bind(this)} />
                     </div>
-                </h2>
-                <div className="">
-                    <div className="flexible-img" style={{backgroundImage: 'url(' + currentImage.src + ')'}}>
-                        <FaAngleLeft className="arrow-l" onClick={this.prevImage.bind(this)}/>
-                        <FaAngleRight className="arrow-r" onClick={this.nextImage.bind(this)}/>
+                    <div className="auth-nav">
+                        { isLoggedIn
+                            ? user.name
+                            : <span className={`sign-in ${loginToggle}`} onClick={this.toggleLogin.bind(this)}>Sign In</span> }
+                        <AuthContainer rootClass={ loginToggle } changeLogInClass={ this.toggleLogin.bind(this) } />
                     </div>
-                </div>
+                </h2>
             </div>
         );
     }
 }
 
 PageHeader.propTypes = {
-    title: PropTypes.string
+    user: PropTypes.object,
+    isLoggedIn: PropTypes.any
 };
 
+export default createContainer(() => {
+    const { get, isLoggedIn } = User;
+    const posts = Meteor.subscribe('posts');
+    return {
+        user: get(),
+        isLoggedIn: isLoggedIn()
+    };
+}, PageHeader);

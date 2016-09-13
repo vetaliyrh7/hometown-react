@@ -1,17 +1,35 @@
-$secondary: rgb(230, 92, 0);
+@import "../variables";
 
 .root-head {
-
+    .auth-nav {
+        float: right;
+        font-size: 21px;
+        margin-top: .29em;
+        margin-right: .5em;
+        &:hover {
+            cursor: pointer;
+        }
+        .sign-in {
+            padding: 5px 12px;
+            transition: all .5s ease;
+            &:hover, &.show-auth {
+                color: white;
+                background: rgba(255,255,255,0.1);
+                border-radius: 6px;
+            }
+        }
+    }
     .search-box {
         display: inline-block;
         float: right;
+        position: relative;
         .search-ico {
             position: absolute;
             vertical-align: middle;
-            color: #e65c00;
+            color: white;
             font-size: 21px;
-            top: 11px;
-            right: 23px;
+            top: 6px;
+            right: 8px;
             cursor: pointer;
         }
         .search-posts {
@@ -19,14 +37,14 @@ $secondary: rgb(230, 92, 0);
             float: right;
             border-radius: 32px;
             border: solid 1px transparent;
-            padding: 0 15px;
-            background: rgba(255,255,255,0.1);
-            color: $secondary;
-            font-size: 28px;
+            padding: 6px 18px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 19px;
             width: 30px;
             transition: all .5s ease;
             &:focus {
-                border: solid 1px $secondary;
+                border: solid 1px white;
                 outline: none;
             }
             &.open {
@@ -53,32 +71,12 @@ $secondary: rgb(230, 92, 0);
             }
         }
     }
-    .flexible-img {
-        position: relative;
-        height: 539px;
-        background-size: 100% 120%;
-        display: flex;
-        align-items: center;
-        .arrow-l, .arrow-r {
-            color: white;
-            font-size: 46px;
-            cursor: pointer;
-            &:hover {
-                color: $secondary;
-            }
-        }
-        .arrow-r {
-            vertical-align: middle;
-            position: absolute;
-            right: 0;
-        }
-    }
 }
 
 .left-side-nav {
     display: flex;
     position: fixed;
-    top: 45%;
+    top: 39%;
     left: -142px;
     transition: all .7s ease;
     align-content: center;
@@ -113,12 +111,17 @@ $secondary: rgb(230, 92, 0);
         display: block;
         padding-bottom: 0.3em;
         cursor: pointer;
-        margin-left: 3px;
+        margin-left: 4px;
         &:hover {
             color: $secondary;
         }
         svg {
             background: rgba(255,255,255, 0.3);
+            border-radius: 3px;
         }
     }
+}
+
+.main-page {
+    margin-top: 7em;
 }

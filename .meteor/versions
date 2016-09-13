@@ -2,6 +2,7 @@ accounts-base@1.2.9
 accounts-facebook@1.0.10
 accounts-google@1.0.10
 accounts-oauth@1.1.13
+accounts-password@1.2.13
 accounts-twitter@1.1.11
 aldeed:simple-schema@1.5.3
 allow-deny@1.0.5
@@ -47,6 +48,7 @@ diff-sequence@1.0.6
 ecmascript@0.5.7
 ecmascript-runtime@0.3.12
 ejson@1.0.12
+email@1.1.16
 es5-shim@4.6.13
 facebook@1.2.8
 fastclick@1.0.12
@@ -77,6 +79,7 @@ modules-runtime@0.7.5
 mongo@1.1.10
 mongo-id@1.0.5
 mongo-livedata@1.0.12
+npm-bcrypt@0.8.7_1
 npm-mongo@1.5.45
 oauth@1.1.11
 oauth1@1.1.10
@@ -98,8 +101,10 @@ reload@1.1.10
 retry@1.0.8
 routepolicy@1.0.11
 service-configuration@1.0.10
+sha@1.0.8
 spacebars@1.0.12
 spacebars-compiler@1.0.12
+srp@1.0.9
 standard-minifier-css@1.1.8
 standard-minifier-js@1.1.8
 templating@1.2.13
