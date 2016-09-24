@@ -1,13 +1,8 @@
 import React, { PropTypes, Component } from "react";
 import { browserHistory, Link } from 'react-router';
-import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import MdSettings from 'react-icons/lib/md/settings';
 import FaAngleLeft from 'react-icons/lib/fa/angle-left';
 import FaAngleRight from 'react-icons/lib/fa/angle-right';
 // Theme components
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 export default class NavBar extends Component {
     constructor() {
