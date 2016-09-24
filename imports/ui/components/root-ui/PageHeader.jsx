@@ -58,7 +58,7 @@ class PageHeader extends Component {
                     </div>
                     <div className="auth-nav">
                         { isLoggedIn
-                            ? user.name
+                            ? <span className="user-username" onClick={this.toggleLogin.bind(this)}>{user.username}</span>
                             : <span className={`sign-in ${loginToggle}`} onClick={this.toggleLogin.bind(this)}>Sign In</span> }
                         <AuthContainer rootClass={ loginToggle } changeLogInClass={ this.toggleLogin.bind(this) } />
                     </div>

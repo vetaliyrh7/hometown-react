@@ -8,6 +8,7 @@
     transition: all .5s ease;
     cursor: default;
     &.show-auth {
+        border-radius: 5px;
         .content {
             transition: all .5s ease;
             top: 0;
@@ -16,9 +17,9 @@
     }
     .content {
         position: relative;
-        top: -213px;
+        top: -230px;
         padding: 10px;
-        background: rgba(255,255,255,0.4);
+        background: $primary;
         border-radius: 5px;
         transition: all .5s ease;
         input {
@@ -48,6 +49,18 @@
             }
         }
     }
+    .message-error {
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        font-size: 18px;
+        background: #f2dede;
+        color: #a94442!important;
+        border: solid 1px #f2dede;
+        padding: 5px;
+        border-radius: 4px;
+        margin-top: 1em;
+    }
     .reg-login {
         margin-top: 1em;
         text-align: center;
@@ -72,6 +85,7 @@
                 color: $secondary;
                 &:hover, &:focus {
                     background: rgba(255,255,255,0.4);
+                    color: $primary;
                 }
             }
             &.reg-btn {

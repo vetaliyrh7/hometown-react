@@ -11,6 +11,20 @@ export const User = {
     create:         (opts, callback) => Accounts.createUser(opts, callback)
 };
 
+export const SignUp = serverFn('SignUp', true, function (payload) {
+    Accounts.createUser(payload);
+});
+
+export const SignIn = function(payload, success) {
+    Meteor.loginWithPassword(payload.email, payload.password, function (res) {
+        success(res);
+    });
+};
+
+export const SignOut = function() {
+    Meteor.logout();
+};
+
 export const ChangeUsername = serverFn('ChangeUsername', true, function (value) {
     if(value.length >= 4) {
         return Meteor.users.update({_id: Meteor.userId()}, {
