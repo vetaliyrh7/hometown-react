@@ -6,8 +6,6 @@ import _ from 'lodash';
 // SCSS files
 import './Auth.scss';
 
-//Custom components
-
 //API imports
 import { User, SignUp, SignIn, SignOut } from '../../../../api';
 
