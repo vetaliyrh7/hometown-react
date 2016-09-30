@@ -60,7 +60,6 @@
         top: 18px;
         padding: 6px 18px;
         left: 0;
-        z-index: 9;
         display: block;
         width: 100%;
         background: rgba(255,255,255,0.2);
@@ -86,22 +85,19 @@
         transition: all .7s ease;
     }
     .nav {
+        background: white;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
         li {
             position: relative;
             display: block;
-            background: rgba(72, 85, 99, 0.5);
-            margin-bottom: 4px;
-            border-bottom: solid 3px transparent;
-            &:hover, &:active, &:visited {
-                background: white;
-                border-bottom: solid 3px $secondary;
-                cursor: pointer;
-                a {
-                    color: $secondary;
-                }
-            }
+            border-bottom: solid 3px $secondary;
+            cursor: pointer;
             a {
-                color: white;
+                color: $secondary;
+            }
+            &:last-child {
+                border-bottom: none;
             }
         }
     }
@@ -124,4 +120,16 @@
 
 .main-page {
     margin-top: 7em;
+}
+
+.bm-morph-shape {
+    fill: white;
+}
+//.bm-burger-button {
+//    button {
+//        display: none!important;
+//    }
+//}
+.nav-btn-open {
+    opacity: 0;
 }
