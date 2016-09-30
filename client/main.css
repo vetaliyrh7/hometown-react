@@ -1,4 +1,7 @@
 /* CSS declarations go here */
+html {
+  height: 100%;
+}
 body {
   background: #485563; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #485563 , #29323c); /* Chrome 10-25, Safari 5.1-6 */
@@ -70,7 +73,6 @@ body {
 }
 .card-type {
   border-radius: 3px;
-  box-shadow: 0 1px 2px 1px gray;
 }
 .rounded-box {
   border-top-left-radius: 3px;
@@ -84,7 +86,7 @@ body {
 }
 .isActive:after {
   content: "✔";
-  background: #1976d2;
+  background: white;
   padding: 6px 7px;
   border-radius: 50%;
   position: absolute;
@@ -95,15 +97,14 @@ body {
   box-shadow: 0 3px 3px 0px gray;
   display: inline-block;
   width: auto;
-  position: absolute;
+  position: relative;
   font-size: 24px;
-  left: 17px;
-  top: 8px;
   cursor: pointer;
   background: #0288d1;
   color: white;
   padding: 0px 7px 2px 7px;
   border-radius: 50%;
+  width: auto;
 }
 .go-back:hover:after {
   content: 'Return';

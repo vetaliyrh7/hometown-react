@@ -11,6 +11,7 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // CUSTOM COMPONENTS
 import MainPageNews from '../components/main-page/main-page-news.jsx';
+import '../components/dash/dash.scss';
 
 export default class Dashboard extends Component {
 
@@ -63,13 +64,13 @@ export default class Dashboard extends Component {
     return (
       <div className='main-page paddinged'>
         <div className="row card-type light-blue darken-2">
-              <div className="col s4 m2 l2 rounded-box no-padding">
+              <div className="col-xs-4 col-sm-2 col-lg-2 rounded-box no-padding">
                     <List>
                         {_.map(links, this.renderLinks.bind(this))}
                     </List>
               </div>
 
-              <div className="col s8 m10 l10 white">
+              <div className="col-xs-8 col-sm-10 col-lg-10 white">
                   {this.props.children}
               </div>
         </div>

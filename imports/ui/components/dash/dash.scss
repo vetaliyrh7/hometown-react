@@ -1,0 +1,45 @@
+@import "../variables";
+.white {
+    background: white;
+    padding: 0!important;
+}
+.card-type {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.image-section {
+    img {
+        vertical-align: middle;
+        height: 300px!important;
+        width: auto;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+}
+.data-header,
+.data-text,
+.image-section,
+.data-actions {
+    padding: 10px;
+    border-bottom: solid 1px $second-primary;
+    margin: 0!important;
+}
+.data-actions {
+    margin-bottom: 10px;
+    border-bottom: none;
+    .save {
+        margin-right: .5em;
+    }
+}
+.data-text {
+    b {
+        display: block;
+    }
+    input {
+        &.half-input {
+            width: 50%;
+            display: inline-block;
+        }
+    }
+}

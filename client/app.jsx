@@ -3,14 +3,15 @@ import { render } from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-import App from '../imports/ui/app.jsx';
-import MainPage from '../imports/ui/containers/main-page.jsx';
-import EducationPage from '../imports/ui/containers/education.jsx';
-import FilmsPage from '../imports/ui/containers/films.jsx';
-import SightsPage from '../imports/ui/containers/sights.jsx';
-import Dashboard from '../imports/ui/containers/dashboard.jsx';
-import PostsList from '../imports/ui/components/dash/posts.jsx';
-import SinglePost from '../imports/ui/components/dash/single-post.jsx';
+import App from '../imports/ui/app';
+import MainPage from '../imports/ui/containers/main-page';
+import EducationPage from '../imports/ui/containers/education';
+import FilmsPage from '../imports/ui/containers/films';
+import NotImplemented from '../imports/ui/containers/NotImplemented';
+import SightsPage from '../imports/ui/containers/sights';
+import Dashboard from '../imports/ui/containers/dashboard';
+import PostsList from '../imports/ui/components/dash/posts';
+import SinglePost from '../imports/ui/components/dash/single-post';
 
 Meteor.startup(() => {
   render((
@@ -27,6 +28,7 @@ Meteor.startup(() => {
             <Route path='/dashboard/users' component={PostsList} />
             <Route path='/dashboard/theme' component={PostsList} />
             <Route path='/dashboard/my-account' component={PostsList} />
+            <Route path='*' component={NotImplemented} />
         </Route>
       </Route>
     </Router>), document.getElementById('render-app'));

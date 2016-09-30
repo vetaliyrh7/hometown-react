@@ -55,7 +55,7 @@ class PostsList extends Component {
   renderContent () {
     const { posts, limit } = this.state;
     return (
-      <div className='main-page'>
+      <div className=''>
         <List>
             {_.map(posts, this.loadPosts)}
         </List>
