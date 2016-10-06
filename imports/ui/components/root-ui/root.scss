@@ -13,7 +13,7 @@
             padding: 5px 12px;
             transition: all .5s ease;
             &:hover, &.show-auth {
-                color: white;
+                color: $secondary;
                 background: rgba(255,255,255,0.1);
                 border-radius: 6px;
             }
@@ -26,11 +26,15 @@
         .search-ico {
             position: absolute;
             vertical-align: middle;
-            color: white;
+            color: black;
             font-size: 21px;
             top: 6px;
             right: 8px;
             cursor: pointer;
+            transition: color .5s ease;
+            &:hover {
+                color: $secondary;
+            }
         }
         .search-posts {
             display: inline-block;
@@ -38,13 +42,12 @@
             border-radius: 32px;
             border: solid 1px transparent;
             padding: 6px 18px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: black;
             font-size: 19px;
             width: 30px;
             transition: all .5s ease;
+            box-shadow: 0px 0px 3px -1px black;
             &:focus {
-                border: solid 1px white;
                 outline: none;
             }
             &.open {
@@ -58,13 +61,14 @@
         margin: 0;
         position: absolute;
         top: 18px;
-        padding: 6px 18px;
+        padding: 10px 18px;
         left: 0;
         display: block;
         width: 100%;
-        background: rgba(255,255,255,0.2);
+        background: white;
+        box-shadow: 0 6px 6px 1px rgba(0,0,0,0.3);
         span {
-            color: white;
+            color: black;
             &.secondary-text {
                 color: $secondary;
             }
@@ -72,49 +76,32 @@
     }
 }
 
-.left-side-nav {
-    display: flex;
+.nav {
     position: fixed;
-    top: 39%;
-    left: -142px;
-    transition: all .7s ease;
-    align-content: center;
-    align-items: center;
+    height: 100%;
+    background: white;
+    width: 200px;
+    z-index: 2;
+    padding: 10px 0;
+    top: 0;
+    left: -200px;
+    transition: left .5s ease, box-shadow .5s .5s ease;
     &.showed {
         left: 0;
-        transition: all .7s ease;
+        box-shadow: 1px 0 3px 3px rgba(0,0,0,0.4);
+        transition: left .5s ease, box-shadow .5s ease;
     }
-    .nav {
-        background: white;
-        border-top-right-radius: 7px;
-        border-bottom-right-radius: 7px;
-        li {
-            position: relative;
-            display: block;
-            border-bottom: solid 3px $secondary;
-            cursor: pointer;
-            a {
-                color: $secondary;
-            }
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-    }
-    .arrows-block {
-        font-size: 49px;
-        color: white;
-        display: block;
-        padding-bottom: 0.3em;
+    .open-menu-trigger {
+        position: absolute;
+        top: 50%;
+        left: 200px;
         cursor: pointer;
-        margin-left: 4px;
-        &:hover {
-            color: $secondary;
-        }
-        svg {
-            background: rgba(255,255,255, 0.3);
-            border-radius: 3px;
-        }
+        background: white;
+        padding: 3px 14px 6px 5px;
+        font-size: 21px;
+        border-top-right-radius: 21px;
+        border-bottom-right-radius: 21px;
+        box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.4);
     }
 }
 
@@ -125,11 +112,7 @@
 .bm-morph-shape {
     fill: white;
 }
-//.bm-burger-button {
-//    button {
-//        display: none!important;
-//    }
-//}
+
 .nav-btn-open {
     opacity: 0;
 }
